@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="author" content="bai">
+		<meta name="description" content="picture-merge">
+		<title>Watermark</title>
+        <link rel="stylesheet" href="css/layout.css">
+	</head>
+	<body>
+        <div class="container">
+            <!-- 顶部操作区 打开/保存文件-->
+            <div class="top">
+                <button class="top-btn">
+                    选择图片
+                </button>
+                <input class="select-file" type="file" accept="image/*" />
+            </div>
+            <!-- 左侧显示窗口 显示图片-->
+            <div class="left">
+                <div class="imgcontainer">
+                    <div class="org-img"></div>
+                    <div class="watermark"></div>
+                </div>
+            </div>
+            <!-- 右侧操作区 编辑-->
+            <div class="right">
+                <div class="opr-area">
+                    <div class="wm-text">
+                        <div class="label wm-text-label">
+                            水印文本
+                            <span style="color: #EE0000;"> * </span>
+                        </div>
+                        <input type="text" class="wm-text-input" placeholder="请输入文本" />
+                    </div>
+                    <div class="wm-color">
+                        <div class="label wm-color-label">
+                            文本颜色
+                        </div>
+                        <div class="wm-color-select">
+                            <div class="color-picker"></div>
+                        </div>
+                    </div>
+                    <div class="wm-fontfamily">
+                        <div class="label wm-fontfamily-label">
+                            字体
+                        </div>
+                        <select class="wm-fontfamily-select">
+                            <option value =""></option>
+                        </select>
+                    </div>
+                    <div class="wm-fontsize">
+                        <div class="label wm-fontsize-label">
+                            字号
+                        </div>
+                        <select class="wm-fontsize-select">
+                            <option value =""></option>
+                        </select>
+                    </div>
+                    <div class="wm-fontweight">
+                        <div class="label wm-fontweight-label">
+                            粗细
+                        </div>
+                        <select class="wm-fontweight-select">
+                            <option value =""></option>
+                        </select>
+                    </div>
+                    <button class="btn make-btn">
+                        生成水印
+                    </button>
+                    <p style='color: red;display: none;'></p>
+                    <hr>
+                    <div class="wm-pos">
+                        <div class="label wm-pos-label">
+                            水印位置
+                        </div>
+                        <div class="wm-pos-x">
+                            <div class="wm-x-label">
+                                横向
+                            </div>
+                            <input class="wm-x-drag" type="range" value="0">
+                            <span class="slider-value">0</span>
+                        </div>
+                        <div class="wm-pos-y">
+                            <div class="wm-y-label">
+                                纵向
+                            </div>
+                            <input class="wm-y-drag" type="range" value="0">
+                            <span class="slider-value">0</span>
+                        </div>
+                    </div>
+                    <div class="wm-angle">
+                        <div class="label wm-angle-label">
+                            水印角度
+                        </div>
+                        <input class="wm-angle-drag" type="range" value="0">
+                        <span class="slider-value">0</span>
+                    </div>
+                    <div class="wm-make">
+                        <button class="btn wm-make-btn">保存图片</button>
+                    </div>
+                    <!-- <hr>
+                    <div class="wm-list">
+                        <div class="wm-list-label">
+                            水印列表
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="wm-item-name">
+                                    aaa
+                                </span>
+                                <span class="wm-item-del"></span>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script src="lib/js/dom-to-image.min.js"></script>
+        <script src="js/constant.js"></script>
+        <script src="js/watermark.js"></script>
+        <script src="js/index.js"></script>
+	</body>
+</html>
