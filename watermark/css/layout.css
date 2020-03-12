@@ -1,0 +1,150 @@
+
+.btn {
+    border-radius: 0.2rem;
+    height: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.top {
+    width: 100%;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #9E9E9E;
+    background-color: #bebebe;
+}
+
+.left {
+    position: absolute;
+    width: 80%;
+    top: 2.5rem;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    border-right: 1px solid #9E9E9E;
+    background: rgba(0,0,0,0.3);
+}
+.left .imgcontainer {
+    overflow: hidden;
+}
+ 
+.right {
+    position: absolute;
+    width: 20%;
+    top: 2.5rem;
+    left: 80%;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.13);
+}
+
+.select-file {
+    display: none;
+}
+
+.top-btn {
+    width: 5rem;
+    background: gray;
+    height: 100%;
+    border: none;
+}
+
+.opr-area {
+    margin: 0.3rem;
+}
+
+.wm-text-input {
+    width: 100%;
+}
+
+.label {
+    color: #03A9F4;
+    line-height: 2rem;
+    height: 2rem;
+}
+
+input {
+    height: 1.1rem;
+    border-radius: 5px;
+}
+
+.wm-color-select {
+    height: 100%;
+    margin-bottom: 1.2rem;
+}
+.color-picker {
+    position: absolute;
+    height: 1.1rem;
+    width: 1.1rem;
+    margin: 1px 0 0 2px;
+    background: #000;
+}
+select {
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 5px;
+}
+
+.make-btn {
+    margin-top: 0.4rem;
+}
+.wm-x-drag {
+    width: 90%;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+    border-bottom: #BEBEBE 1px solid;
+}
+.wm-item-del {
+    float: right;
+    background: url(../img/del.png) no-repeat center center;
+    background-size: 100% 100%;
+    height: 1rem;
+    width: 1rem;
+}
+.watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* 滑块 */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 80%;
+    border-radius: 3px; /*这个属性设置使填充进度条时的图形为圆角*/
+    background: transparent;
+    height: 0.5rem;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    border-radius: 5px; /*将轨道设为圆角的*/
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.13), inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1rem;
+    width: 1rem;
+    margin-top: -0.25rem; /*使滑块超出轨道部分的偏移量相等*/
+    background: #ffffff; 
+    border-radius: 50%; /*外观设置为圆形*/
+    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+}
