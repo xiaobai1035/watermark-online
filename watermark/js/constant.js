@@ -1,12 +1,16 @@
 // 颜色选择器颜色列表
 const COLOR_LIST = [
-    {"primary": "#E91E63"},
-    {"primary_dark": "#C2185B"},
-    {"primary_light": "#F8BBD0"},
-    {"accent": "#CDDC39"},
-    {"primary_text": "#212121"},
-    {"secondary_text": "#727272"},
-    {"divider": "#B6B6B6"}
+    "black",
+    "white",
+    "brown",
+    "green",
+    "yellow",
+    "grey",
+    "pink",
+    "blue",
+    "red",
+    "orange",
+    "purple"
 ]
 // 字体列表
 ,FONT_FAMILY_LIST = {

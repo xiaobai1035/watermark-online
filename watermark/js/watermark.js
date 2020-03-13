@@ -88,11 +88,8 @@ class Watermark {
     makeNewImage(domNode, filename, filetype) {
         domtoimage.toPng(document.getElementsByClassName(domNode)[0])
             .then(function (dataUrl) {
-                var img = new Image();
-                img.src = dataUrl;
-                // document.body.appendChild(img);
                 var a = document.createElement('a');
-                a.setAttribute('href',dataUrl);
+                a.setAttribute('href', dataUrl);
                 a.setAttribute('download', filename == undefined ? "default" + "." + filetype : filename);
                 a.click();
                 a.remove();

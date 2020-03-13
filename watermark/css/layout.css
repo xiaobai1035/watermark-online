@@ -32,11 +32,9 @@ body {
     box-sizing: border-box;
     border-right: 1px solid #9E9E9E;
     background: rgba(0,0,0,0.3);
+    overflow: auto;
 }
-.left .imgcontainer {
-    overflow: hidden;
-}
- 
+
 .right {
     position: absolute;
     width: 20%;
@@ -85,7 +83,7 @@ input {
     height: 1.1rem;
     width: 1.1rem;
     margin: 1px 0 0 2px;
-    background: #000;
+    background-color: #000;
 }
 select {
     width: 100%;

@@ -7,7 +7,7 @@ $(function(){
     for (let item in FONT_FAMILY_LIST) {
         $(".wm-fontfamily-select").append('<option value="' + item + '">' + FONT_FAMILY_LIST[item] + '</option>');
     }
-    
+
     // 字号
     $(".wm-fontsize-select").html("");
     for (let item in FONT_SIZE) {
@@ -22,7 +22,7 @@ $(function(){
     
     // 组件声明
     var watermark = new Watermark();
-    
+
     // 滑块组件
     $.fn.RangeSlider = function(cfg){
         this.sliderCfg = {
@@ -55,31 +55,47 @@ $(function(){
     $.fn.ColorPicker = function(cfg){
         this.pickerCfg = {
             colors: cfg && cfg.colors && cfg.colors.length > 0 ? cfg.colors : ["#000"],
+            width: cfg && cfg.width && !isNaN(parseFloat(cfg.width)) ? Number(cfg.width) + "rem" : "2rem",
+            height: cfg && cfg.width && !isNaN(parseFloat(cfg.height)) ? Number(cfg.height) + "rem" : "2rem",
             callback: cfg && cfg.callback ? cfg.callback : null
         };
     
         var $input = $(this);
         var colors = this.pickerCfg.colors;
+        var width = this.pickerCfg.width;
+        var height = this.pickerCfg.height;
         var callback = this.pickerCfg.callback;
     
         var position = {"x": $input.position().left, "y": $input.position().top};
-        console.log(position);
-        // '<div style="width: 1.5rem;height: 1.5rem;background: #03A9F4;margin: 0.2rem;float: left;"></div>'
+        var showTimeOut = undefined;
         
         $input.on("click", function(e) {
-            $input.after('<div style="width: 10rem;height: 5rem;background: rgba(255,255,255,0.5);border: #BBBBBB solid 1px; border-radius: 0.3rem;position: absolute;top: ' + Number(position.y + 20) + 'px;left: ' + Number(position.x + 20) + 'px;"></div>')
+            $(".27383467357787581132picker").remove();
             
+            var colorItem = "";
+            for (var item in colors) {
+                colorItem += '<div class="27383467357787581132color-item" style="width: 1.5rem;height: 1.5rem;background: ' + COLOR_LIST[item] + ';margin: 0.2rem;float: left;"></div>';
+            }
+            $input.after('<div class="27383467357787581132picker" style="width: ' + width + ';height: ' + height + ';background: rgba(255,255,255,0.5);border: #BBBBBB solid 1px; border-radius: 0.3rem;position: absolute;top: ' 
+            + Number(position.y + 20) + 'px;left: ' + Number(position.x + 20) + 'px;z-index: 999;overflow-y:auto;">' + colorItem + '</div>');
+            
+            clearTimeout(showTimeOut);
+            showTimeOut = setTimeout(function() {
+                $(".27383467357787581132picker").remove();
+            }, 2000);
         });
         
-        // $input.attr('value', this.value);
-        // $input.css( 'background', 'linear-gradient(to right, #059CFA, rgba(0, 0, 0, 0) ' + this.value + '%, rgba(0, 0, 0, 0))' );
-        
-        // if ($.isFunction(callback)) {
-        //     callback(this);
-        // }
+        $(document).on('click', '.27383467357787581132picker .27383467357787581132color-item', function() {
+            var colorIndex = $(this).index();
+            $(".27383467357787581132picker").remove();
+            callback && callback(colors[colorIndex]);
+        });
     };
     // ColorPicker
-    $('.color-picker').ColorPicker({});
+    var changeColor = function(color) {
+        $(".color-picker").css("background-color", color);
+    }
+    $('.color-picker').ColorPicker({width: "7.7", height: "5.7", colors: COLOR_LIST, callback: changeColor});
     // 选择文件
     $(".top-btn").on("click", function () {
         $(this).next().click();
@@ -88,12 +104,15 @@ $(function(){
         var e = e || window.event;
         //获取 文件 个数 取消的时候使用
         var file = e.target.files[0];
-        if(file.type.indexOf("image") == 0) {
-            $(".org-img").html("");
+        if(file && file.type.indexOf("image") == 0) {
+            $(".org-img").html("").next().html("");
+            $(".imgcontainer").css({"width": "", "height": ""});
+            $(".imgcontainer").height(watermark.imgHeight);
             watermark.imageToBase64(file, function(imageUrl) {
                 watermark.imageAssignEle(".org-img", imageUrl, function(w, h) {
                     watermark.imgWidth = w;
                     watermark.imgHeight = h;
+                    $(".imgcontainer").css({"width": watermark.imgWidth, "height": watermark.imgHeight});
                 });
             });
         }
@@ -118,7 +137,7 @@ $(function(){
             return;
         } else {
             var text = $(".wm-text-input").val();
-            var color = textColor;
+            var color = $(".color-picker").css("background-color");
             var fontFamily = $(".wm-fontfamily-select option:selected").val();
             var fontsize = FONT_SIZE[$(".wm-fontsize-select option:selected").val()][1];
             var fontWeight = FONT_WEIGHT[$(".wm-fontweight-select option:selected").val()];
@@ -151,6 +170,4 @@ $(function(){
         if ($(".wm-text-input").val() == "") return;
         watermark.makeNewImage("imgcontainer", watermark.filename, watermark.type);
     });
-    
-    $(".color-picker")
 }); 
