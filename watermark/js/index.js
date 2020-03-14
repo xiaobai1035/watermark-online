@@ -1,3 +1,5 @@
+
+import Watermark from "./watermark.js";
 $(function(){
     var timeOut = undefined;
     var textColor = "#000";
@@ -168,6 +170,21 @@ $(function(){
     // 点击保存图片
     $(".wm-make-btn").on("click", function() {
         if ($(".wm-text-input").val() == "") return;
-        watermark.makeNewImage("imgcontainer", watermark.filename, watermark.type);
+        makeNewImage("imgcontainer", watermark.filename, watermark.type);
     });
+    
+    // 9.合并转成图片保存(html=>image)
+    function makeNewImage(domNode, filename, filetype) {
+        domtoimage.toPng(document.getElementsByClassName(domNode)[0])
+            .then(function (dataUrl) {
+                var a = document.createElement('a');
+                a.setAttribute('href', dataUrl);
+                a.setAttribute('download', filename == undefined ? "default" + "." + filetype : filename);
+                a.click();
+                a.remove();
+            })
+            .catch(function (error) {
+                console.error('转图片失败!', error);
+            });
+    }
 }); 
