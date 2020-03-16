@@ -22,7 +22,11 @@ body {
     border-bottom: 1px solid #9E9E9E;
     background-color: #bebebe;
 }
-
+.git-logo {
+    float: right;
+    width: 2.25rem;
+    height: auto;
+}
 .left {
     position: absolute;
     width: 80%;
