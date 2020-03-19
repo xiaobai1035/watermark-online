@@ -84,6 +84,9 @@ class Watermark {
     adjustAngle(element, angle = 0) {
         $(element).css("transform", "rotate(" + angle + "deg)");
     }
+    adjustOpacity(element, o = 0) {
+        $(element).css("opacity", o + "");
+    }
 };
 
 export default Watermark;

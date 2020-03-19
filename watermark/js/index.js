@@ -148,6 +148,11 @@ $(function(){
         }
     });
     
+    // 不透明度滑块
+    var changeOpacity = function(ele) {
+        $(ele).next().text(ele.value);
+        watermark.adjustOpacity(".watermark", ele.max - ele.value);
+    }
     // 位置X滑块
     var changeX = function(ele) {
         $(ele).next().text(ele.value);
@@ -163,6 +168,7 @@ $(function(){
         $(ele).next().text(ele.value);
         watermark.adjustAngle(".watermark", ele.value);
     }
+    $('.wm-opacity-drag').RangeSlider({min: 0, max: 1, step: 0.01, callback: changeOpacity});
     $('.wm-x-drag').RangeSlider({min: 0, max: 100, step: 1, callback: changeX});
     $('.wm-y-drag').RangeSlider({min: 0, max: 100, step: 1, callback: changeY});
     $('.wm-angle-drag').RangeSlider({ min: 0, max: 360, step: 1, callback: changeAngle});
